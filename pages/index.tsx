@@ -1,8 +1,6 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import React from "react";
-import styles from "../styles/Home.module.css";
+import style from "./style.module.scss";
 
 const Home: NextPage = () => {
   const [count, setCount] = React.useState(0);
@@ -16,7 +14,7 @@ const Home: NextPage = () => {
   return (
     <>
       <button onClick={handlePlusCount}>カウントアップ</button>
-      <div>{count}</div>
+      <div className="content">{count}</div>
     </>
   );
 };
