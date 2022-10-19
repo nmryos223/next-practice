@@ -1,22 +1,19 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import React from "react";
+import { RecordContext, useCreateRecordContext } from "../libs";
 import style from "./style.module.scss";
+import { FatBurningRecord } from "./fatBurningRecord";
 
 const Home: NextPage = () => {
-  const [count, setCount] = React.useState(0);
-
-  const handlePlusCount = React.useCallback(() => {
-    setCount((prev) => prev + 1);
-  }, []);
-  React.useEffect(() => {
-    console.log(count);
-  }, [count]);
+  const recordContext = useCreateRecordContext();
   return (
-    <>
-      <button onClick={handlePlusCount}>カウントアップ</button>
-      <div className="content">{count}</div>
-    </>
+    <RecordContext.Provider value={recordContext}>
+      <Link href="/">
+        <FatBurningRecord />
+      </Link>
+    </RecordContext.Provider>
   );
 };
 
-export default Home;
+export default React.memo(Home);
